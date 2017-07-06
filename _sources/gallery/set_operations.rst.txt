@@ -1,0 +1,382 @@
+
+
+.. _sphx_glr_gallery_set_operations.py:
+
+
+Set-Operations with Overlay
+===========================
+
+When working with multiple spatial datasets -- especially multiple *polygon* or
+*line* datasets -- users often wish to create new shapes based on places where
+those datasets overlap (or don't overlap). These manipulations are often
+referred using the language of sets -- intersections, unions, and differences.
+These types of operations are made available in the *geopandas* library through
+the ``overlay`` function.
+
+The basic idea is demonstrated by the graphic below but keep in mind that
+overlays operate at the DataFrame level, not on individual geometries, and the
+properties from both are retained. In effect, for every shape in the first
+GeoDataFrame, this operation is executed against every other shape in the other
+GeoDataFrame:
+
+.. image:: ../_static/overlay_operations.png
+
+**Source: QGIS Documentation**
+
+(Note to users familiar with the *shapely* library: ``overlay`` can be thought
+of as offering versions of the standard *shapely* set-operations that deal with
+the complexities of applying set operations to two *GeoSeries*. The standard
+*shapely* set-operations are also available as ``GeoSeries`` methods.)
+
+
+The different Overlay operations
+--------------------------------
+
+First, we create some example data:
+
+
+
+.. code-block:: python
+
+
+    import geopandas as gpd
+    from shapely.geometry import Polygon
+    polys1 = gpd.GeoSeries([Polygon([(0,0), (2,0), (2,2), (0,2)]),
+                            Polygon([(2,2), (4,2), (4,4), (2,4)])])
+    polys2 = gpd.GeoSeries([Polygon([(1,1), (3,1), (3,3), (1,3)]),
+                            Polygon([(3,3), (5,3), (5,5), (3,5)])])
+
+    df1 = gpd.GeoDataFrame({'geometry': polys1, 'df1':[1,2]})
+    df2 = gpd.GeoDataFrame({'geometry': polys2, 'df2':[1,2]})
+
+
+
+
+
+
+
+These two GeoDataFrames have some overlapping areas:
+
+
+
+.. code-block:: python
+
+
+    ax = df1.plot(color='red');
+    df2.plot(ax=ax, color='green')
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_001.png
+    :align: center
+
+
+
+
+We illustrate the different overlay modes with the above example.
+The ``overlay`` function will determine the set of all individual geometries
+from overlaying the two input GeoDataFrames. This result covers the area covered
+by the two input GeoDataFrames, and also preserves all unique regions defined by
+the combined boundaries of the two GeoDataFrames.
+
+When using ``how='union'``, all those possible geometries are returned:
+
+
+
+.. code-block:: python
+
+
+    res_union = gpd.overlay(df1, df2, how='union')
+    res_union
+
+    ax = res_union.plot()
+    df1.plot(ax=ax, facecolor='none')
+    df2.plot(ax=ax, facecolor='none')
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_002.png
+    :align: center
+
+
+
+
+The other ``how`` operations will return different subsets of those geometries.
+With ``how='intersection'``, it returns only those geometries that are contained
+by both GeoDataFrames:
+
+
+
+.. code-block:: python
+
+
+    res_intersection = gpd.overlay(df1, df2, how='intersection')
+    print(res_intersection)
+
+    ax = res_intersection.plot()
+    df1.plot(ax=ax, facecolor='none')
+    df2.plot(ax=ax, facecolor='none')
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_003.png
+    :align: center
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    df1  df2                             geometry
+    0    1    1  POLYGON ((2 1, 1 1, 1 2, 2 2, 2 1))
+    1    2    1  POLYGON ((3 3, 3 2, 2 2, 2 3, 3 3))
+    2    2    2  POLYGON ((3 4, 4 4, 4 3, 3 3, 3 4))
+
+
+``how='symmetric_difference'`` is the opposite of ``'intersection'`` and returns
+the geometries that are only part of one of the GeoDataFrames but not of both:
+
+
+
+.. code-block:: python
+
+
+    res_symdiff = gpd.overlay(df1, df2, how='symmetric_difference')
+    print(res_symdiff)
+
+    ax = res_symdiff.plot()
+    df1.plot(ax=ax, facecolor='none');
+    df2.plot(ax=ax, facecolor='none');
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_004.png
+    :align: center
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    df1  df2                                       geometry
+    0  1.0  NaN  POLYGON ((2 1, 2 0, 0 0, 0 2, 1 2, 1 1, 2 1))
+    1  NaN  1.0            POLYGON ((2 1, 2 2, 3 2, 3 1, 2 1))
+    2  NaN  1.0            POLYGON ((2 2, 1 2, 1 3, 2 3, 2 2))
+    3  2.0  NaN            POLYGON ((3 2, 3 3, 4 3, 4 2, 3 2))
+    4  2.0  NaN            POLYGON ((3 3, 2 3, 2 4, 3 4, 3 3))
+    5  NaN  2.0  POLYGON ((4 3, 4 4, 3 4, 3 5, 5 5, 5 3, 4 3))
+
+
+To obtain the geometries that are part of ``df1`` but are not contained in
+``df2``, you can use ``how='difference'``:
+
+
+
+.. code-block:: python
+
+
+    res_difference = gpd.overlay(df1, df2, how='difference')
+    print(res_difference)
+
+    ax = res_difference.plot()
+    df1.plot(ax=ax, facecolor='none');
+    df2.plot(ax=ax, facecolor='none');
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_005.png
+    :align: center
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    df1   df2                                       geometry
+    0    1  None  POLYGON ((2 1, 2 0, 0 0, 0 2, 1 2, 1 1, 2 1))
+    1    2  None            POLYGON ((3 2, 3 3, 4 3, 4 2, 3 2))
+    2    2  None            POLYGON ((3 3, 2 3, 2 4, 3 4, 3 3))
+
+
+Finally, with ``how='identity'``, the result consists of the surface of
+``df1``, but with the geometries obtained from overlaying ``df1`` with ``df2``
+
+
+
+.. code-block:: python
+
+
+    res_identity = gpd.overlay(df1, df2, how='identity')
+    print(res_identity)
+
+    ax = res_identity.plot()
+    df1.plot(ax=ax, facecolor='none');
+    df2.plot(ax=ax, facecolor='none');
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_006.png
+    :align: center
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    df1  df2                                       geometry
+    0    1  NaN  POLYGON ((2 1, 2 0, 0 0, 0 2, 1 2, 1 1, 2 1))
+    1    1  1.0            POLYGON ((2 1, 1 1, 1 2, 2 2, 2 1))
+    2    2  NaN            POLYGON ((3 2, 3 3, 4 3, 4 2, 3 2))
+    3    2  1.0            POLYGON ((3 3, 3 2, 2 2, 2 3, 3 3))
+    4    2  NaN            POLYGON ((3 3, 2 3, 2 4, 3 4, 3 3))
+    5    2  2.0            POLYGON ((3 4, 4 4, 4 3, 3 3, 3 4))
+
+
+Overlay Countries Example
+-------------------------
+
+First, we load the countries and cities example datasets and select :
+
+
+
+.. code-block:: python
+
+
+    world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+    capitals = gpd.read_file(gpd.datasets.get_path('naturalearth_cities'))
+
+    # Select South Amarica and some columns
+    countries = world[world['continent'] == "South America"]
+    countries = countries[['geometry', 'name']]
+
+    # Project to crs that uses meters as distance measure
+    countries = countries.to_crs('+init=epsg:3395')
+    capitals = capitals.to_crs('+init=epsg:3395')
+
+
+
+
+
+
+
+To illustrate the ``overlay`` function, consider the following case in which one
+wishes to identify the "core" portion of each country -- defined as areas within
+500km of a capital -- using a ``GeoDataFrame`` of countries and a
+``GeoDataFrame`` of capitals.
+
+
+
+.. code-block:: python
+
+
+    # Look at countries:
+    countries.plot()
+
+    # Now buffer cities to find area within 500km.
+    # Check CRS -- World Mercator, units of meters.
+    print(capitals.crs)
+
+    # make 500km buffer
+    capitals['geometry']= capitals.buffer(500000)
+    capitals.plot()
+
+
+
+
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image:: /gallery/images/sphx_glr_set_operations_007.png
+            :scale: 47
+
+    *
+
+      .. image:: /gallery/images/sphx_glr_set_operations_008.png
+            :scale: 47
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    +init=epsg:3395
+
+
+To select only the portion of countries within 500km of a capital, we specify
+the ``how`` option to be "intersect", which creates a new set of polygons where
+these two layers overlap:
+
+
+
+.. code-block:: python
+
+
+
+    country_cores = gpd.overlay(countries, capitals, how='intersection')
+    country_cores.plot()
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_009.png
+    :align: center
+
+
+
+
+Changing the "how" option allows for different types of overlay operations.
+For example, if we were interested in the portions of countries *far* from
+capitals (the peripheries), we would compute the difference of the two.
+
+
+
+.. code-block:: python
+
+
+    country_peripheries = gpd.overlay(countries, capitals, how='difference')
+    country_peripheries.plot()
+
+
+
+
+.. image:: /gallery/images/sphx_glr_set_operations_010.png
+    :align: center
+
+
+
+
+More Examples
+-------------
+
+A larger set of examples of the use of ``overlay`` can be found
+`here <http://nbviewer.jupyter.org/github/geopandas/geopandas/blob/master/examples/overlays.ipynb>`_
+
+
+**Total running time of the script:** ( 0 minutes  12.639 seconds)
+
+
+
+.. container:: sphx-glr-footer
+
+
+  .. container:: sphx-glr-download
+
+     :download:`Download Python source code: set_operations.py <set_operations.py>`
+
+
+
+  .. container:: sphx-glr-download
+
+     :download:`Download Jupyter notebook: set_operations.ipynb <set_operations.ipynb>`
+
+.. rst-class:: sphx-glr-signature
+
+    `Generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_

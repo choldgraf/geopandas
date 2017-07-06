@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Set-Operations with Overlay &mdash; GeoPandas 0.2+53.g1731e44.dirty documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="../about.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GeoPandas 0.2+53.g1731e44.dirty documentation" href="../index.html"/>
+        <link rel="up" title="Examples Gallery" href="index.html"/>
+        <link rel="next" title="Reading and Writing Files" href="../io.html"/>
+        <link rel="prev" title="Mapping Tools" href="mapping.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GeoPandas
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2+53.g1731e44.dirty
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples Gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="geocoding.html">Geocoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projections.html">Managing Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometric_manipulations.html">Geometric Manipulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mergingdata.html">Merging Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapping.html">Mapping Tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Set-Operations with Overlay</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-different-overlay-operations">The different Overlay operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overlay-countries-example">Overlay Countries Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-examples">More Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../io.html">Reading and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference to All Attributes and Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoPandas</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Examples Gallery</a> &raquo;</li>
+        
+      <li>Set-Operations with Overlay</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/gallery/set_operations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="set-operations-with-overlay">
+<span id="sphx-glr-gallery-set-operations-py"></span><h1>Set-Operations with Overlay<a class="headerlink" href="#set-operations-with-overlay" title="Permalink to this headline">¶</a></h1>
+<p>When working with multiple spatial datasets – especially multiple <em>polygon</em> or
+<em>line</em> datasets – users often wish to create new shapes based on places where
+those datasets overlap (or don’t overlap). These manipulations are often
+referred using the language of sets – intersections, unions, and differences.
+These types of operations are made available in the <em>geopandas</em> library through
+the <code class="docutils literal"><span class="pre">overlay</span></code> function.</p>
+<p>The basic idea is demonstrated by the graphic below but keep in mind that
+overlays operate at the DataFrame level, not on individual geometries, and the
+properties from both are retained. In effect, for every shape in the first
+GeoDataFrame, this operation is executed against every other shape in the other
+GeoDataFrame:</p>
+<img alt="../_images/overlay_operations.png" src="../_images/overlay_operations.png" />
+<p><strong>Source: QGIS Documentation</strong></p>
+<p>(Note to users familiar with the <em>shapely</em> library: <code class="docutils literal"><span class="pre">overlay</span></code> can be thought
+of as offering versions of the standard <em>shapely</em> set-operations that deal with
+the complexities of applying set operations to two <em>GeoSeries</em>. The standard
+<em>shapely</em> set-operations are also available as <code class="docutils literal"><span class="pre">GeoSeries</span></code> methods.)</p>
+<div class="section" id="the-different-overlay-operations">
+<h2>The different Overlay operations<a class="headerlink" href="#the-different-overlay-operations" title="Permalink to this headline">¶</a></h2>
+<p>First, we create some example data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="kn">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
+<span class="n">polys1</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">Polygon</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)]),</span>
+                        <span class="n">Polygon</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)])])</span>
+<span class="n">polys2</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">Polygon</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)]),</span>
+                        <span class="n">Polygon</span><span class="p">([(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)])])</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s1">&#39;geometry&#39;</span><span class="p">:</span> <span class="n">polys1</span><span class="p">,</span> <span class="s1">&#39;df1&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s1">&#39;geometry&#39;</span><span class="p">:</span> <span class="n">polys2</span><span class="p">,</span> <span class="s1">&#39;df2&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]})</span>
+</pre></div>
+</div>
+<p>These two GeoDataFrames have some overlapping areas:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_001.png" class="align-center" src="../_images/sphx_glr_set_operations_001.png" />
+<p>We illustrate the different overlay modes with the above example.
+The <code class="docutils literal"><span class="pre">overlay</span></code> function will determine the set of all individual geometries
+from overlaying the two input GeoDataFrames. This result covers the area covered
+by the two input GeoDataFrames, and also preserves all unique regions defined by
+the combined boundaries of the two GeoDataFrames.</p>
+<p>When using <code class="docutils literal"><span class="pre">how='union'</span></code>, all those possible geometries are returned:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">res_union</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;union&#39;</span><span class="p">)</span>
+<span class="n">res_union</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">res_union</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_002.png" class="align-center" src="../_images/sphx_glr_set_operations_002.png" />
+<p>The other <code class="docutils literal"><span class="pre">how</span></code> operations will return different subsets of those geometries.
+With <code class="docutils literal"><span class="pre">how='intersection'</span></code>, it returns only those geometries that are contained
+by both GeoDataFrames:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">res_intersection</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;intersection&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res_intersection</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">res_intersection</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_003.png" class="align-center" src="../_images/sphx_glr_set_operations_003.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">df1</span>  <span class="n">df2</span>                             <span class="n">geometry</span>
+<span class="mi">0</span>    <span class="mi">1</span>    <span class="mi">1</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">1</span>    <span class="mi">2</span>    <span class="mi">1</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">2</span>    <span class="mi">2</span>    <span class="mi">2</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">how='symmetric_difference'</span></code> is the opposite of <code class="docutils literal"><span class="pre">'intersection'</span></code> and returns
+the geometries that are only part of one of the GeoDataFrames but not of both:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">res_symdiff</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;symmetric_difference&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res_symdiff</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">res_symdiff</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_004.png" class="align-center" src="../_images/sphx_glr_set_operations_004.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">df1</span>  <span class="n">df2</span>                                       <span class="n">geometry</span>
+<span class="mi">0</span>  <span class="mf">1.0</span>  <span class="n">NaN</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">1</span>  <span class="n">NaN</span>  <span class="mf">1.0</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">2</span>  <span class="n">NaN</span>  <span class="mf">1.0</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))</span>
+<span class="mi">3</span>  <span class="mf">2.0</span>  <span class="n">NaN</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">))</span>
+<span class="mi">4</span>  <span class="mf">2.0</span>  <span class="n">NaN</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">5</span>  <span class="n">NaN</span>  <span class="mf">2.0</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">4</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>To obtain the geometries that are part of <code class="docutils literal"><span class="pre">df1</span></code> but are not contained in
+<code class="docutils literal"><span class="pre">df2</span></code>, you can use <code class="docutils literal"><span class="pre">how='difference'</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">res_difference</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;difference&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res_difference</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">res_difference</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_005.png" class="align-center" src="../_images/sphx_glr_set_operations_005.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">df1</span>   <span class="n">df2</span>                                       <span class="n">geometry</span>
+<span class="mi">0</span>    <span class="mi">1</span>  <span class="kc">None</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">1</span>    <span class="mi">2</span>  <span class="kc">None</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">))</span>
+<span class="mi">2</span>    <span class="mi">2</span>  <span class="kc">None</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Finally, with <code class="docutils literal"><span class="pre">how='identity'</span></code>, the result consists of the surface of
+<code class="docutils literal"><span class="pre">df1</span></code>, but with the geometries obtained from overlaying <code class="docutils literal"><span class="pre">df1</span></code> with <code class="docutils literal"><span class="pre">df2</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">res_identity</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res_identity</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">res_identity</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_006.png" class="align-center" src="../_images/sphx_glr_set_operations_006.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">df1</span>  <span class="n">df2</span>                                       <span class="n">geometry</span>
+<span class="mi">0</span>    <span class="mi">1</span>  <span class="n">NaN</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">1</span>    <span class="mi">1</span>  <span class="mf">1.0</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">2</span>    <span class="mi">2</span>  <span class="n">NaN</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">))</span>
+<span class="mi">3</span>    <span class="mi">2</span>  <span class="mf">1.0</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">4</span>    <span class="mi">2</span>  <span class="n">NaN</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">5</span>    <span class="mi">2</span>  <span class="mf">2.0</span>            <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">3</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="overlay-countries-example">
+<h2>Overlay Countries Example<a class="headerlink" href="#overlay-countries-example" title="Permalink to this headline">¶</a></h2>
+<p>First, we load the countries and cities example datasets and select :</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
+<span class="n">capitals</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_cities&#39;</span><span class="p">))</span>
+
+<span class="c1"># Select South Amarica and some columns</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="p">[</span><span class="s1">&#39;continent&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;South America&quot;</span><span class="p">]</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">countries</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Project to crs that uses meters as distance measure</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;+init=epsg:3395&#39;</span><span class="p">)</span>
+<span class="n">capitals</span> <span class="o">=</span> <span class="n">capitals</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;+init=epsg:3395&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To illustrate the <code class="docutils literal"><span class="pre">overlay</span></code> function, consider the following case in which one
+wishes to identify the “core” portion of each country – defined as areas within
+500km of a capital – using a <code class="docutils literal"><span class="pre">GeoDataFrame</span></code> of countries and a
+<code class="docutils literal"><span class="pre">GeoDataFrame</span></code> of capitals.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Look at countries:</span>
+<span class="n">countries</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Now buffer cities to find area within 500km.</span>
+<span class="c1"># Check CRS -- World Mercator, units of meters.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">capitals</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="c1"># make 500km buffer</span>
+<span class="n">capitals</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">capitals</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">500000</span><span class="p">)</span>
+<span class="n">capitals</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><a class="first reference internal image-reference" href="../_images/sphx_glr_set_operations_007.png"><img alt="../_images/sphx_glr_set_operations_007.png" src="../_images/sphx_glr_set_operations_007.png" style="width: 300.79999999999995px; height: 225.6px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../_images/sphx_glr_set_operations_008.png"><img alt="../_images/sphx_glr_set_operations_008.png" src="../_images/sphx_glr_set_operations_008.png" style="width: 300.79999999999995px; height: 225.6px;" /></a>
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">init</span><span class="o">=</span><span class="n">epsg</span><span class="p">:</span><span class="mi">3395</span>
+</pre></div>
+</div>
+<p>To select only the portion of countries within 500km of a capital, we specify
+the <code class="docutils literal"><span class="pre">how</span></code> option to be “intersect”, which creates a new set of polygons where
+these two layers overlap:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">country_cores</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">capitals</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;intersection&#39;</span><span class="p">)</span>
+<span class="n">country_cores</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_009.png" class="align-center" src="../_images/sphx_glr_set_operations_009.png" />
+<p>Changing the “how” option allows for different types of overlay operations.
+For example, if we were interested in the portions of countries <em>far</em> from
+capitals (the peripheries), we would compute the difference of the two.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">country_peripheries</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">capitals</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;difference&#39;</span><span class="p">)</span>
+<span class="n">country_peripheries</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_set_operations_010.png" class="align-center" src="../_images/sphx_glr_set_operations_010.png" />
+</div>
+<div class="section" id="more-examples">
+<h2>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h2>
+<p>A larger set of examples of the use of <code class="docutils literal"><span class="pre">overlay</span></code> can be found
+<a class="reference external" href="http://nbviewer.jupyter.org/github/geopandas/geopandas/blob/master/examples/overlays.ipynb">here</a></p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  12.639 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/set_operations.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">set_operations.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/set_operations.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">set_operations.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../io.html" class="btn btn-neutral float-right" title="Reading and Writing Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mapping.html" class="btn btn-neutral" title="Mapping Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2016, GeoPandas developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2+53.g1731e44.dirty',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

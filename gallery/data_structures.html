@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Structures &mdash; GeoPandas 0.2+53.g1731e44.dirty documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="../about.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GeoPandas 0.2+53.g1731e44.dirty documentation" href="../index.html"/>
+        <link rel="up" title="Examples Gallery" href="index.html"/>
+        <link rel="next" title="Aggregation with dissolve" href="aggregation_with_dissolve.html"/>
+        <link rel="prev" title="Geocoding" href="geocoding.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GeoPandas
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2+53.g1731e44.dirty
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples Gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="geocoding.html">Geocoding</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geoseries">GeoSeries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-attributes-and-methods">Overview of Attributes and Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#geodataframe">GeoDataFrame</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attributes-and-methods">Attributes and Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projections.html">Managing Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometric_manipulations.html">Geometric Manipulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mergingdata.html">Merging Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mapping.html">Mapping Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_operations.html">Set-Operations with Overlay</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../io.html">Reading and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference to All Attributes and Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoPandas</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Examples Gallery</a> &raquo;</li>
+        
+      <li>Data Structures</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/gallery/data_structures.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-structures">
+<span id="sphx-glr-gallery-data-structures-py"></span><h1>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h1>
+<p>GeoPandas implements two main data structures, a <code class="docutils literal"><span class="pre">GeoSeries</span></code> and a
+<code class="docutils literal"><span class="pre">GeoDataFrame</span></code>.  These are subclasses of pandas <code class="docutils literal"><span class="pre">Series</span></code> and
+<code class="docutils literal"><span class="pre">DataFrame</span></code>, respectively.</p>
+<div class="section" id="geoseries">
+<h2>GeoSeries<a class="headerlink" href="#geoseries" title="Permalink to this headline">¶</a></h2>
+<p>A <code class="docutils literal"><span class="pre">GeoSeries</span></code> is essentially a vector where each entry in the vector
+is a set of shapes corresponding to one observation. An entry may consist
+of only one shape (like a single polygon) or multiple shapes that are
+meant to be thought of as one observation (like the many polygons that
+make up the State of Hawaii or a country like Indonesia).</p>
+<p><em>geopandas</em> has three basic classes of geometric objects (which are actually
+<em>shapely</em> objects):</p>
+<ul class="simple">
+<li>Points / Multi-Points</li>
+<li>Lines / Multi-Lines</li>
+<li>Polygons / Multi-Polygons</li>
+</ul>
+<p>Note that all entries in  a <code class="docutils literal"><span class="pre">GeoSeries</span></code> need not be of the same geometric
+type, although certain export operations will fail if this is not the case.</p>
+<div class="section" id="overview-of-attributes-and-methods">
+<h3>Overview of Attributes and Methods<a class="headerlink" href="#overview-of-attributes-and-methods" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">GeoSeries</span></code> class implements nearly all of the attributes and
+methods of Shapely objects.  When applied to a <code class="docutils literal"><span class="pre">GeoSeries</span></code>, they
+will apply elementwise to all geometries in the series.  Binary
+operations can be applied between two <code class="docutils literal"><span class="pre">GeoSeries</span></code>, in which case the
+operation is carried out elementwise.  The two series will be aligned
+by matching indices.  Binary operations can also be applied to a
+single geometry, in which case the operation is carried out for each
+element of the series with that geometry.  In either case, a
+<code class="docutils literal"><span class="pre">Series</span></code> or a <code class="docutils literal"><span class="pre">GeoSeries</span></code> will be returned, as appropriate.</p>
+<p>A short summary of a few attributes and methods for GeoSeries is
+presented here, and a full list can be found in the <span class="xref std std-doc">all attributes and
+methods page</span>.
+There is also a family of methods for creating new shapes by expanding
+existing shapes or applying set-theoretic operations like “union” described
+in <a class="reference internal" href="geometric_manipulations.html"><span class="doc">geometric manipulations</span></a>.</p>
+<div class="section" id="attributes">
+<h4>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">area</span></code>: shape area (units of projection – see <a class="reference internal" href="projections.html"><span class="doc">projections</span></a>)</li>
+<li><code class="docutils literal"><span class="pre">bounds</span></code>: tuple of max and min coordinates on each axis for each shape</li>
+<li><code class="docutils literal"><span class="pre">total_bounds</span></code>: tuple of max and min coordinates on each axis for entire
+GeoSeries</li>
+<li><code class="docutils literal"><span class="pre">geom_type</span></code>: type of geometry.</li>
+<li><code class="docutils literal"><span class="pre">is_valid</span></code>: tests if coordinates make a shape that is reasonable geometric
+shape (<a class="reference external" href="http://www.opengeospatial.org/standards/sfa">according to this</a>).</li>
+</ul>
+</div>
+<div class="section" id="basic-methods">
+<h4>Basic Methods<a class="headerlink" href="#basic-methods" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">distance(other)</span></code>: returns <code class="docutils literal"><span class="pre">Series</span></code> with minimum distance from each entry
+to <code class="docutils literal"><span class="pre">other</span></code></li>
+<li><code class="docutils literal"><span class="pre">centroid</span></code>: returns <code class="docutils literal"><span class="pre">GeoSeries</span></code> of centroids</li>
+<li><code class="docutils literal"><span class="pre">representative_point()</span></code>:  returns <code class="docutils literal"><span class="pre">GeoSeries</span></code> of points that are
+guaranteed to be within each geometry. It does <strong>NOT</strong> return centroids.</li>
+<li><code class="docutils literal"><span class="pre">to_crs()</span></code>: change coordinate reference system. See <a class="reference internal" href="projections.html"><span class="doc">projections</span></a></li>
+<li><code class="docutils literal"><span class="pre">plot()</span></code>: plot <code class="docutils literal"><span class="pre">GeoSeries</span></code>. See <a class="reference internal" href="mapping.html"><span class="doc">mapping</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="relationship-tests">
+<h4>Relationship Tests<a class="headerlink" href="#relationship-tests" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">geom_almost_equals(other)</span></code>: is shape almost the same as <code class="docutils literal"><span class="pre">other</span></code>
+(good when floating point precision issues make shapes slightly different)</li>
+<li><code class="docutils literal"><span class="pre">contains(other)</span></code>: is shape contained within <code class="docutils literal"><span class="pre">other</span></code></li>
+<li><code class="docutils literal"><span class="pre">intersects(other)</span></code>: does shape intersect <code class="docutils literal"><span class="pre">other</span></code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="geodataframe">
+<h2>GeoDataFrame<a class="headerlink" href="#geodataframe" title="Permalink to this headline">¶</a></h2>
+<p>A <code class="docutils literal"><span class="pre">GeoDataFrame</span></code> is a tabular data structure that contains a <code class="docutils literal"><span class="pre">GeoSeries</span></code>.</p>
+<p>The most important property of a <code class="docutils literal"><span class="pre">GeoDataFrame</span></code> is that it always has one
+<code class="docutils literal"><span class="pre">GeoSeries</span></code> column that holds a special status. This <code class="docutils literal"><span class="pre">GeoSeries</span></code> is
+referred to as the <code class="docutils literal"><span class="pre">GeoDataFrame</span></code>’s “geometry”. When a spatial method
+is applied to a <code class="docutils literal"><span class="pre">GeoDataFrame</span></code> (or a spatial attribute like <code class="docutils literal"><span class="pre">area</span></code>
+is called), this commands will always act on the “geometry” column.</p>
+<p>The “geometry” column – no matter its name – can be accessed through
+the <code class="docutils literal"><span class="pre">geometry</span></code> attribute (<code class="docutils literal"><span class="pre">gdf.geometry</span></code>), and the name of the
+<code class="docutils literal"><span class="pre">geometry</span></code> column can be found by typing <code class="docutils literal"><span class="pre">gdf.geometry.name</span></code>.</p>
+<p>A <code class="docutils literal"><span class="pre">GeoDataFrame</span></code> may also contain other columns with geometrical
+(shapely) objects, but only one column can be the active geometry
+at a time. To change which column is the active geometry column,
+use the <code class="docutils literal"><span class="pre">set_geometry</span></code> method.</p>
+<p>An example using the <code class="docutils literal"><span class="pre">worlds</span></code> GeoDataFrame:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="kn">as</span> <span class="nn">gpd</span>
+
+
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1">#Plot countries</span>
+<span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_data_structures_001.png" class="align-center" src="../_images/sphx_glr_data_structures_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">pop_est</span>      <span class="n">continent</span>                  <span class="n">name</span> <span class="n">iso_a3</span>  <span class="n">gdp_md_est</span>  \
+<span class="mi">0</span>  <span class="mf">28400000.0</span>           <span class="n">Asia</span>           <span class="n">Afghanistan</span>    <span class="n">AFG</span>     <span class="mf">22270.0</span>
+<span class="mi">1</span>  <span class="mf">12799293.0</span>         <span class="n">Africa</span>                <span class="n">Angola</span>    <span class="n">AGO</span>    <span class="mf">110300.0</span>
+<span class="mi">2</span>   <span class="mf">3639453.0</span>         <span class="n">Europe</span>               <span class="n">Albania</span>    <span class="n">ALB</span>     <span class="mf">21810.0</span>
+<span class="mi">3</span>   <span class="mf">4798491.0</span>           <span class="n">Asia</span>  <span class="n">United</span> <span class="n">Arab</span> <span class="n">Emirates</span>    <span class="n">ARE</span>    <span class="mf">184300.0</span>
+<span class="mi">4</span>  <span class="mf">40913584.0</span>  <span class="n">South</span> <span class="n">America</span>             <span class="n">Argentina</span>    <span class="n">ARG</span>    <span class="mf">573900.0</span>
+
+                                            <span class="n">geometry</span>
+<span class="mi">0</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mf">61.21081709172574</span> <span class="mf">35.65007233330923</span><span class="p">,</span><span class="o">...</span>
+<span class="mi">1</span>  <span class="p">(</span><span class="n">POLYGON</span> <span class="p">((</span><span class="mf">16.32652835456705</span> <span class="o">-</span><span class="mf">5.87747039146621</span><span class="o">...</span>
+<span class="mi">2</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mf">20.59024743010491</span> <span class="mf">41.85540416113361</span><span class="p">,</span><span class="o">...</span>
+<span class="mi">3</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mf">51.57951867046327</span> <span class="mf">24.24549713795111</span><span class="p">,</span><span class="o">...</span>
+<span class="mi">4</span>  <span class="p">(</span><span class="n">POLYGON</span> <span class="p">((</span><span class="o">-</span><span class="mf">65.50000000000003</span> <span class="o">-</span><span class="mf">55.199999999999</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Currently, the column named “geometry” with country borders is the active
+geometry column:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">geometry</span>
+</pre></div>
+</div>
+<p>We can also rename this column to “borders”:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">world</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;geometry&#39;</span><span class="p">:</span> <span class="s1">&#39;borders&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;borders&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">borders</span>
+</pre></div>
+</div>
+<p>Now, we create centroids and make it the geometry:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">world</span><span class="p">[</span><span class="s1">&#39;centroid_column&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">centroid</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;centroid_column&#39;</span><span class="p">)</span>
+<span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_data_structures_002.png" class="align-center" src="../_images/sphx_glr_data_structures_002.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>A <code class="docutils literal"><span class="pre">GeoDataFrame</span></code> keeps track of the active column by name,
+so if you rename the active geometry column, you must also reset the
+geometry:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;old_name&#39;</span><span class="p">:</span> <span class="s1">&#39;new_name&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;new_name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Somewhat confusingly, by default when you use the
+<code class="docutils literal"><span class="pre">read_file</span></code> command, the column containing spatial objects from the
+file is named “geometry” by default, and will be set as the active
+geometry column. However, despite using the same term for the name
+of the column and the name of the special attribute that keeps track
+of the active column, they are distinct. You can easily shift the active
+geometry column to a different <code class="docutils literal"><span class="pre">GeoSeries</span></code> with the <code class="docutils literal"><span class="pre">set_geometry</span></code>
+command. Further, <code class="docutils literal"><span class="pre">gdf.geometry</span></code> will always return the active geometry
+column, <em>not</em> the column named <code class="docutils literal"><span class="pre">geometry</span></code>. If you wish to call a column
+named “geometry”, and a different column is the active geometry column, use</p>
+</div>
+<p><code class="docutils literal"><span class="pre">gdf['geometry']</span></code>, not <code class="docutils literal"><span class="pre">gdf.geometry</span></code>.</p>
+<div class="section" id="attributes-and-methods">
+<h3>Attributes and Methods<a class="headerlink" href="#attributes-and-methods" title="Permalink to this headline">¶</a></h3>
+<p>Any of the attributes calls or methods described for a <code class="docutils literal"><span class="pre">GeoSeries</span></code>
+will work on a <code class="docutils literal"><span class="pre">GeoDataFrame</span></code> – effectively, they are just applied to
+the “geometry” <code class="docutils literal"><span class="pre">GeoSeries</span></code>.</p>
+<p>However, <code class="docutils literal"><span class="pre">GeoDataFrames</span></code> also have a few extra methods for input and
+output which are described on the <span class="xref std std-doc">Input and Output</span> page and for
+geocoding with are described in <a class="reference internal" href="geocoding.html"><span class="doc">Geocoding</span></a>.</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  2.176 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/data_structures.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">data_structures.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/data_structures.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">data_structures.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aggregation_with_dissolve.html" class="btn btn-neutral float-right" title="Aggregation with dissolve" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="geocoding.html" class="btn btn-neutral" title="Geocoding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2016, GeoPandas developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2+53.g1731e44.dirty',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

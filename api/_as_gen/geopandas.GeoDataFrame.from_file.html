@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>geopandas.GeoDataFrame.from_file &mdash; GeoPandas 0.2+53.g1731e44.dirty documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="../../about.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GeoPandas 0.2+53.g1731e44.dirty documentation" href="../../index.html"/>
+        <link rel="up" title="Reference" href="../../reference.html"/>
+        <link rel="next" title="geopandas.GeoSeries" href="geopandas.GeoSeries.html"/>
+        <link rel="prev" title="geopandas.GeoDataFrame" href="geopandas.GeoDataFrame.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GeoPandas
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2+53.g1731e44.dirty
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">Examples Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../io.html">Reading and Writing Files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference to All Attributes and Methods</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../reference.html#geodataframe">GeoDataFrame</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../reference.html#api-pages">API Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="geopandas.GeoDataFrame.html">geopandas.GeoDataFrame</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">geopandas.GeoDataFrame.from_file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-using-geopandas-geodataframe-from-file">Examples using <code class="docutils literal"><span class="pre">geopandas.GeoDataFrame.from_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.GeoSeries.html">geopandas.GeoSeries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.overlay.html">geopandas.overlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.read_file.html">geopandas.read_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.sjoin.html">geopandas.sjoin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.tools.geocode.html">geopandas.tools.geocode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.datasets.get_path.html">geopandas.datasets.get_path</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoPandas</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../reference.html">Reference</a> &raquo;</li>
+        
+      <li>geopandas.GeoDataFrame.from_file</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/_as_gen/geopandas.GeoDataFrame.from_file.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="geopandas-geodataframe-from-file">
+<h1>geopandas.GeoDataFrame.from_file<a class="headerlink" href="#geopandas-geodataframe-from-file" title="Permalink to this headline">¶</a></h1>
+<dl class="classmethod">
+<dt id="geopandas.GeoDataFrame.from_file">
+<em class="property">classmethod </em><code class="descclassname">GeoDataFrame.</code><code class="descname">from_file</code><span class="sig-paren">(</span><em>filename</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#geopandas.GeoDataFrame.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alternate constructor to create a GeoDataFrame from a file.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd>df = geopandas.GeoDataFrame.from_file(‘nybb.shp’)</dd>
+</dl>
+<p>Wraps geopandas.read_file(). For additional help, see read_file()</p>
+</dd></dl>
+
+<div class="section" id="examples-using-geopandas-geodataframe-from-file">
+<h2>Examples using <code class="docutils literal"><span class="pre">geopandas.GeoDataFrame.from_file</span></code><a class="headerlink" href="#examples-using-geopandas-geodataframe-from-file" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="*geopandas* makes available all the tools for geometric manipulations in the `*shapely* library..."><div class="figure" id="id1">
+<img alt="../../_images/sphx_glr_geometric_manipulations_thumb.png" src="../../_images/sphx_glr_geometric_manipulations_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/geometric_manipulations.html#sphx-glr-gallery-geometric-manipulations-py"><span class="std std-ref">Geometric Manipulations</span></a></span></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="geopandas.GeoSeries.html" class="btn btn-neutral float-right" title="geopandas.GeoSeries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="geopandas.GeoDataFrame.html" class="btn btn-neutral" title="geopandas.GeoDataFrame" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2016, GeoPandas developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.2+53.g1731e44.dirty',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

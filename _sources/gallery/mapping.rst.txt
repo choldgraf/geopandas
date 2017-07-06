@@ -1,0 +1,260 @@
+
+
+.. _sphx_glr_gallery_mapping.py:
+
+
+Mapping Tools
+=============
+
+Plotting maps with matplotlib and geopandas.
+
+*geopandas* provides a high-level interface to the ``matplotlib`` library for
+making maps. Mapping shapes is as easy as using the ``plot()`` method
+on a ``GeoSeries`` or ``GeoDataFrame``.
+
+.. currentmodule:: geopandas
+
+Loading some example data:
+
+
+
+.. code-block:: python
+
+    # sphinx_gallery_thumbnail_number = 2
+    import geopandas as gpd
+
+    world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+    cities = gpd.read_file(gpd.datasets.get_path('naturalearth_cities'))
+
+
+
+
+
+
+
+We can now plot those GeoDataFrames:
+
+
+
+.. code-block:: python
+
+
+    # Examine country GeoDataFrame
+    print(world.head())
+
+    # Basic plot, random colors
+    world.plot();
+
+
+
+
+.. image:: /gallery/images/sphx_glr_mapping_001.png
+    :align: center
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    pop_est      continent                  name iso_a3  gdp_md_est  \
+    0  28400000.0           Asia           Afghanistan    AFG     22270.0   
+    1  12799293.0         Africa                Angola    AGO    110300.0   
+    2   3639453.0         Europe               Albania    ALB     21810.0   
+    3   4798491.0           Asia  United Arab Emirates    ARE    184300.0   
+    4  40913584.0  South America             Argentina    ARG    573900.0   
+
+                                                geometry  
+    0  POLYGON ((61.21081709172574 35.65007233330923,...  
+    1  (POLYGON ((16.32652835456705 -5.87747039146621...  
+    2  POLYGON ((20.59024743010491 41.85540416113361,...  
+    3  POLYGON ((51.57951867046327 24.24549713795111,...  
+    4  (POLYGON ((-65.50000000000003 -55.199999999999...
+
+
+Note that in general, any options one can pass to
+`pyplot <http://matplotlib.org/api/pyplot_api.html>`_ in ``matplotlib``
+(or `style options that work for
+lines <http://matplotlib.org/api/lines_api.html>`_) can be passed to the
+``plot()`` method.
+
+Chloropleth Maps
+----------------
+
+*geopandas* makes it easy to create Chloropleth maps (maps where the color
+of each shape is based on the value of an associated variable). Simply use
+the plot command with the ``column`` argument set to the column whose values
+you want used to assign colors.
+
+
+
+.. code-block:: python
+
+
+    # Plot by GDP per capta
+    world = world[(world.pop_est>0) & (world.name!="Antarctica")]
+    world['gdp_per_cap'] = world.gdp_md_est / world.pop_est
+    world.plot(column='gdp_per_cap');
+
+
+
+
+.. image:: /gallery/images/sphx_glr_mapping_002.png
+    :align: center
+
+
+
+
+Choosing colors
+~~~~~~~~~~~~~~~
+
+One can also modify the colors used by ``plot`` with the ``cmap``
+option (for a full list of colormaps, see the `matplotlib website
+<http://matplotlib.org/users/colormaps.html>`_):
+
+
+
+.. code-block:: python
+
+
+    world.plot(column='gdp_per_cap', cmap='OrRd');
+
+
+
+
+.. image:: /gallery/images/sphx_glr_mapping_003.png
+    :align: center
+
+
+
+
+The way color maps are scaled can also be manipulated with the ``scheme``
+option (if you have ``pysal`` installed, which can be accomplished via
+``conda install pysal``). By default, ``scheme`` is set to 'equal_intervals',
+but it can also be adjusted to any other
+`pysal option <http://pysal.org/1.2/library/esda/mapclassify.html>`_, like
+'quantiles', 'percentiles', etc.
+
+
+
+.. code-block:: python
+
+
+    world.plot(column='gdp_per_cap', cmap='OrRd', scheme='quantiles');
+
+
+
+
+.. image:: /gallery/images/sphx_glr_mapping_004.png
+    :align: center
+
+
+
+
+Maps with Layers
+----------------
+
+There are two strategies for making a map with multiple layers -- one more
+succinct, and one that is a littel more flexible.
+
+Before combining maps, however, remember to always ensure they share a common
+CRS (so they will align).
+
+
+
+.. code-block:: python
+
+
+    # Look at capitals
+    # Note use of standard `pyplot` line style options
+    cities.plot(marker='*', color='green', markersize=5);
+
+    # Check crs
+    cities = cities.to_crs(world.crs)
+
+    # Now we can overlay over country outlines
+    # And yes, there are lots of island capitals
+    # apparently in the middle of the ocean!
+
+
+
+
+.. image:: /gallery/images/sphx_glr_mapping_005.png
+    :align: center
+
+
+
+
+**Method 1**
+
+
+
+.. code-block:: python
+
+
+    base = world.plot(color='white')
+    cities.plot(ax=base, marker='o', color='red', markersize=5);
+
+
+
+
+.. image:: /gallery/images/sphx_glr_mapping_006.png
+    :align: center
+
+
+
+
+**Method 2: Using matplotlib objects**
+
+
+
+.. code-block:: python
+
+
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+
+    # set aspect to equal. This is done automatically
+    # when using *geopandas* plot on it's own, but not when
+    # working with pyplot directly.
+    ax.set_aspect('equal')
+
+    world.plot(ax=ax, color='white')
+    cities.plot(ax=ax, marker='o', color='red', markersize=5)
+    plt.show();
+
+
+
+
+.. image:: /gallery/images/sphx_glr_mapping_007.png
+    :align: center
+
+
+
+
+Other Resources
+---------------
+Links to jupyter Notebooks for different mapping tasks:
+
+`Making Heat Maps <http://nbviewer.jupyter.org/gist/perrygeo/c426355e40037c452434>`_
+
+
+**Total running time of the script:** ( 0 minutes  8.507 seconds)
+
+
+
+.. container:: sphx-glr-footer
+
+
+  .. container:: sphx-glr-download
+
+     :download:`Download Python source code: mapping.py <mapping.py>`
+
+
+
+  .. container:: sphx-glr-download
+
+     :download:`Download Jupyter notebook: mapping.ipynb <mapping.ipynb>`
+
+.. rst-class:: sphx-glr-signature
+
+    `Generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_
