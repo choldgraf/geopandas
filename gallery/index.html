@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Examples Gallery &mdash; GeoPandas 0.2+53.g1731e44.dirty documentation</title>
+  <title>Examples Gallery &mdash; GeoPandas 0.2+69.g94161ea.dirty documentation</title>
   
 
   
@@ -32,6 +32,8 @@
   
     <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
 
   
         <link rel="author" title="About these documents"
@@ -39,8 +41,8 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="GeoPandas 0.2+53.g1731e44.dirty documentation" href="../index.html"/>
-        <link rel="next" title="Geocoding" href="geocoding.html"/>
+    <link rel="top" title="GeoPandas 0.2+69.g94161ea.dirty documentation" href="../index.html"/>
+        <link rel="next" title="Visualizing NYC Boroughs" href="nyc_boros.html"/>
         <link rel="prev" title="Installation" href="../install.html"/> 
 
   
@@ -70,7 +72,7 @@
             
             
               <div class="version">
-                0.2+53.g1731e44.dirty
+                0.2+69.g94161ea.dirty
               </div>
             
           
@@ -97,17 +99,22 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples Gallery</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geocoding.html">Geocoding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html">Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projections.html">Managing Projections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometric_manipulations.html">Geometric Manipulations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mergingdata.html">Merging Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mapping.html">Mapping Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set_operations.html">Set-Operations with Overlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nyc_boros.html">Visualizing NYC Boroughs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartopy_convert.html">Plotting with CartoPy and GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartopy_convert.html#plotting-with-cartopy">Plotting with CartoPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartopy_convert.html#cartopy-to-geopandas">CartoPy to GeoPandas</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structures.html">Data Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Reading and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing.html">Indexing and Selecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mapping.html">Making Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections.html">Managing Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometric_manipulations.html">Geometric Manipulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../set_operations.html">Set Operations with overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mergingdata.html">Merging Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geocoding.html">Geocoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference to All Attributes and Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to GeoPandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
@@ -179,51 +186,15 @@
 <p>The following examples show off the functionality in GeoPandas. They highlight
 many of the things you can do with this package, and show off some
 best-practices.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="Geocoding with geopandas."><div class="figure" id="id1">
-<img alt="../_images/sphx_glr_geocoding_thumb.png" src="../_images/sphx_glr_geocoding_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="geocoding.html#sphx-glr-gallery-geocoding-py"><span class="std std-ref">Geocoding</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="Visualize the Boroughs of New York City with Geopandas."><div class="figure" id="id1">
+<img alt="../_images/sphx_glr_nyc_boros_thumb.png" src="../_images/sphx_glr_nyc_boros_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="nyc_boros.html#sphx-glr-gallery-nyc-boros-py"><span class="std std-ref">Visualizing NYC Boroughs</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="GeoPandas implements two main data structures, a ``GeoSeries`` and a ``GeoDataFrame``.  These a..."><div class="figure" id="id2">
-<img alt="../_images/sphx_glr_data_structures_thumb.png" src="../_images/sphx_glr_data_structures_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="data_structures.html#sphx-glr-gallery-data-structures-py"><span class="std std-ref">Data Structures</span></a></span></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="How to change data granularity with geopandas."><div class="figure" id="id3">
-<img alt="../_images/sphx_glr_aggregation_with_dissolve_thumb.png" src="../_images/sphx_glr_aggregation_with_dissolve_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="aggregation_with_dissolve.html#sphx-glr-gallery-aggregation-with-dissolve-py"><span class="std std-ref">Aggregation with dissolve</span></a></span></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="Coordinate reference systems and transformations in geopandas."><div class="figure" id="id4">
-<img alt="../_images/sphx_glr_projections_thumb.png" src="../_images/sphx_glr_projections_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="projections.html#sphx-glr-gallery-projections-py"><span class="std std-ref">Managing Projections</span></a></span></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="*geopandas* makes available all the tools for geometric manipulations in the `*shapely* library..."><div class="figure" id="id5">
-<img alt="../_images/sphx_glr_geometric_manipulations_thumb.png" src="../_images/sphx_glr_geometric_manipulations_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="geometric_manipulations.html#sphx-glr-gallery-geometric-manipulations-py"><span class="std std-ref">Geometric Manipulations</span></a></span></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="Merging datasets in geopandas."><div class="figure" id="id6">
-<img alt="../_images/sphx_glr_mergingdata_thumb.png" src="../_images/sphx_glr_mergingdata_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="mergingdata.html#sphx-glr-gallery-mergingdata-py"><span class="std std-ref">Merging Data</span></a></span></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="Plotting maps with matplotlib and geopandas."><div class="figure" id="id7">
-<img alt="../_images/sphx_glr_mapping_thumb.png" src="../_images/sphx_glr_mapping_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="mapping.html#sphx-glr-gallery-mapping-py"><span class="std std-ref">Mapping Tools</span></a></span></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="When working with multiple spatial datasets -- especially multiple *polygon* or *line* datasets..."><div class="figure" id="id8">
-<img alt="../_images/sphx_glr_set_operations_thumb.png" src="../_images/sphx_glr_set_operations_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="set_operations.html#sphx-glr-gallery-set-operations-py"><span class="std std-ref">Set-Operations with Overlay</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="Converting between GeoPandas and CartoPy for visualizing data."><div class="figure" id="id2">
+<img alt="../_images/sphx_glr_cartopy_convert_thumb.png" src="../_images/sphx_glr_cartopy_convert_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="cartopy_convert.html#sphx-glr-gallery-cartopy-convert-py"><span class="std std-ref">Plotting with CartoPy and GeoPandas</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -246,7 +217,7 @@ best-practices.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="geocoding.html" class="btn btn-neutral float-right" title="Geocoding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nyc_boros.html" class="btn btn-neutral float-right" title="Visualizing NYC Boroughs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../install.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -280,7 +251,7 @@ best-practices.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2+53.g1731e44.dirty',
+            VERSION:'0.2+69.g94161ea.dirty',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

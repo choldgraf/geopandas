@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Geocoding &mdash; GeoPandas 0.2+53.g1731e44.dirty documentation</title>
+  <title>Geocoding &mdash; GeoPandas 0.2+69.g94161ea.dirty documentation</title>
   
 
   
@@ -32,6 +32,8 @@
   
     <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
 
   
         <link rel="author" title="About these documents"
@@ -39,10 +41,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="GeoPandas 0.2+53.g1731e44.dirty documentation" href="../index.html"/>
-        <link rel="up" title="Examples Gallery" href="index.html"/>
-        <link rel="next" title="Data Structures" href="data_structures.html"/>
-        <link rel="prev" title="Examples Gallery" href="index.html"/> 
+    <link rel="top" title="GeoPandas 0.2+69.g94161ea.dirty documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -71,7 +70,7 @@
             
             
               <div class="version">
-                0.2+53.g1731e44.dirty
+                0.2+69.g94161ea.dirty
               </div>
             
           
@@ -95,20 +94,19 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples Gallery</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Geocoding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html">Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projections.html">Managing Projections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometric_manipulations.html">Geometric Manipulations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mergingdata.html">Merging Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mapping.html">Mapping Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set_operations.html">Set-Operations with Overlay</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Examples Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structures.html">Data Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Reading and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing.html">Indexing and Selecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mapping.html">Making Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections.html">Managing Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometric_manipulations.html">Geometric Manipulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../set_operations.html">Set Operations with overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mergingdata.html">Merging Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geocoding.html">Geocoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference to All Attributes and Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to GeoPandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
@@ -156,8 +154,6 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Examples Gallery</a> &raquo;</li>
-        
       <li>Geocoding</li>
     
     
@@ -191,8 +187,8 @@ chosen provider.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;San Francisco&#39;</span><span class="p">,</span> <span class="s1">&#39;New York City&#39;</span><span class="p">,</span> <span class="s1">&#39;Paris&#39;</span><span class="p">,</span> <span class="s1">&#39;Sydney&#39;</span><span class="p">,</span> <span class="s1">&#39;Mumbai&#39;</span><span class="p">]</span>
-<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
-<span class="n">geocoded_cities</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">cities</span><span class="p">)</span>
+<span class="n">world</span> <span class="o">=</span> <a href="../api/_as_gen/geopandas.read_file.html#geopandas.read_file" title="View documentation for geopandas.read_file"><span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span></a><span class="p">(</span><a href="../api/_as_gen/geopandas.datasets.get_path.html#geopandas.datasets.get_path" title="View documentation for geopandas.datasets.get_path"><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span></a><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
+<span class="n">geocoded_cities</span> <span class="o">=</span> <a href="../api/_as_gen/geopandas.tools.geocode.html#geopandas.tools.geocode" title="View documentation for geopandas.tools.geocode"><span class="n">gpd</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">geocode</span></a><span class="p">(</span><span class="n">cities</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">()</span>
 <span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -218,15 +214,6 @@ chosen provider.</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="data_structures.html" class="btn btn-neutral float-right" title="Data Structures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral" title="Examples Gallery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -255,7 +242,7 @@ chosen provider.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2+53.g1731e44.dirty',
+            VERSION:'0.2+69.g94161ea.dirty',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

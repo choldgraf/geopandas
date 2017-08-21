@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>geopandas.read_file &mdash; GeoPandas 0.2+53.g1731e44.dirty documentation</title>
+  <title>geopandas.read_file &mdash; GeoPandas 0.2+69.g94161ea.dirty documentation</title>
   
 
   
@@ -32,6 +32,8 @@
   
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
 
   
         <link rel="author" title="About these documents"
@@ -39,7 +41,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="GeoPandas 0.2+53.g1731e44.dirty documentation" href="../../index.html"/>
+    <link rel="top" title="GeoPandas 0.2+69.g94161ea.dirty documentation" href="../../index.html"/>
         <link rel="up" title="Reference" href="../../reference.html"/>
         <link rel="next" title="geopandas.sjoin" href="geopandas.sjoin.html"/>
         <link rel="prev" title="geopandas.overlay" href="geopandas.overlay.html"/> 
@@ -71,7 +73,7 @@
             
             
               <div class="version">
-                0.2+53.g1731e44.dirty
+                0.2+69.g94161ea.dirty
               </div>
             
           
@@ -98,12 +100,20 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">Examples Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_structures.html">Data Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../io.html">Reading and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexing.html">Indexing and Selecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mapping.html">Making Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projections.html">Managing Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geometric_manipulations.html">Geometric Manipulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../set_operations.html">Set Operations with overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mergingdata.html">Merging Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geocoding.html">Geocoding</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference to All Attributes and Methods</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../reference.html#geodataframe">GeoDataFrame</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../reference.html#api-pages">API Pages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="geopandas.GeoDataFrame.html">geopandas.GeoDataFrame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geopandas.GeoDataFrame.from_file.html">geopandas.GeoDataFrame.from_file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geopandas.GeoSeries.html">geopandas.GeoSeries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geopandas.overlay.html">geopandas.overlay</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">geopandas.read_file</a><ul>
@@ -198,33 +208,9 @@ possible keywords, type: <code class="docutils literal"><span class="pre">import
 
 <div class="section" id="examples-using-geopandas-read-file">
 <h2>Examples using <code class="docutils literal"><span class="pre">geopandas.read_file</span></code><a class="headerlink" href="#examples-using-geopandas-read-file" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="How to change data granularity with geopandas."><div class="figure" id="id1">
-<img alt="../../_images/sphx_glr_aggregation_with_dissolve_thumb.png" src="../../_images/sphx_glr_aggregation_with_dissolve_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/aggregation_with_dissolve.html#sphx-glr-gallery-aggregation-with-dissolve-py"><span class="std std-ref">Aggregation with dissolve</span></a></span></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="GeoPandas implements two main data structures, a ``GeoSeries`` and a ``GeoDataFrame``.  These a..."><div class="figure" id="id2">
-<img alt="../../_images/sphx_glr_data_structures_thumb.png" src="../../_images/sphx_glr_data_structures_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/data_structures.html#sphx-glr-gallery-data-structures-py"><span class="std std-ref">Data Structures</span></a></span></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Geocoding with geopandas."><div class="figure" id="id3">
-<img alt="../../_images/sphx_glr_geocoding_thumb.png" src="../../_images/sphx_glr_geocoding_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/geocoding.html#sphx-glr-gallery-geocoding-py"><span class="std std-ref">Geocoding</span></a></span></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Plotting maps with matplotlib and geopandas."><div class="figure" id="id4">
-<img alt="../../_images/sphx_glr_mapping_thumb.png" src="../../_images/sphx_glr_mapping_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/mapping.html#sphx-glr-gallery-mapping-py"><span class="std std-ref">Mapping Tools</span></a></span></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Merging datasets in geopandas."><div class="figure" id="id5">
-<img alt="../../_images/sphx_glr_mergingdata_thumb.png" src="../../_images/sphx_glr_mergingdata_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/mergingdata.html#sphx-glr-gallery-mergingdata-py"><span class="std std-ref">Merging Data</span></a></span></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Coordinate reference systems and transformations in geopandas."><div class="figure" id="id6">
-<img alt="../../_images/sphx_glr_projections_thumb.png" src="../../_images/sphx_glr_projections_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/projections.html#sphx-glr-gallery-projections-py"><span class="std std-ref">Managing Projections</span></a></span></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="When working with multiple spatial datasets -- especially multiple *polygon* or *line* datasets..."><div class="figure" id="id7">
-<img alt="../../_images/sphx_glr_set_operations_thumb.png" src="../../_images/sphx_glr_set_operations_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/set_operations.html#sphx-glr-gallery-set-operations-py"><span class="std std-ref">Set-Operations with Overlay</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="Converting between GeoPandas and CartoPy for visualizing data."><div class="figure" id="id1">
+<img alt="../../_images/sphx_glr_cartopy_convert_thumb.png" src="../../_images/sphx_glr_cartopy_convert_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/cartopy_convert.html#sphx-glr-gallery-cartopy-convert-py"><span class="std std-ref">Plotting with CartoPy and GeoPandas</span></a></span></p>
 </div>
 </div><div class="clearer"></div></div>
 </div>
@@ -273,7 +259,7 @@ possible keywords, type: <code class="docutils literal"><span class="pre">import
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.2+53.g1731e44.dirty',
+            VERSION:'0.2+69.g94161ea.dirty',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

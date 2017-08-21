@@ -13,13 +13,13 @@ best-practices.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Geocoding with geopandas.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Visualize the Boroughs of New York City with Geopandas.">
 
 .. only:: html
 
-    .. figure:: /gallery/images/thumb/sphx_glr_geocoding_thumb.png
+    .. figure:: /gallery/images/thumb/sphx_glr_nyc_boros_thumb.png
 
-        :ref:`sphx_glr_gallery_geocoding.py`
+        :ref:`sphx_glr_gallery_nyc_boros.py`
 
 .. raw:: html
 
@@ -29,17 +29,17 @@ best-practices.
 .. toctree::
    :hidden:
 
-   /gallery/geocoding
+   /gallery/nyc_boros
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="GeoPandas implements two main data structures, a ``GeoSeries`` and a ``GeoDataFrame``.  These a...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Converting between GeoPandas and CartoPy for visualizing data.">
 
 .. only:: html
 
-    .. figure:: /gallery/images/thumb/sphx_glr_data_structures_thumb.png
+    .. figure:: /gallery/images/thumb/sphx_glr_cartopy_convert_thumb.png
 
-        :ref:`sphx_glr_gallery_data_structures.py`
+        :ref:`sphx_glr_gallery_cartopy_convert.py`
 
 .. raw:: html
 
@@ -49,127 +49,7 @@ best-practices.
 .. toctree::
    :hidden:
 
-   /gallery/data_structures
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="How to change data granularity with geopandas.">
-
-.. only:: html
-
-    .. figure:: /gallery/images/thumb/sphx_glr_aggregation_with_dissolve_thumb.png
-
-        :ref:`sphx_glr_gallery_aggregation_with_dissolve.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /gallery/aggregation_with_dissolve
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Coordinate reference systems and transformations in geopandas.">
-
-.. only:: html
-
-    .. figure:: /gallery/images/thumb/sphx_glr_projections_thumb.png
-
-        :ref:`sphx_glr_gallery_projections.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /gallery/projections
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="*geopandas* makes available all the tools for geometric manipulations in the `*shapely* library...">
-
-.. only:: html
-
-    .. figure:: /gallery/images/thumb/sphx_glr_geometric_manipulations_thumb.png
-
-        :ref:`sphx_glr_gallery_geometric_manipulations.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /gallery/geometric_manipulations
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Merging datasets in geopandas.">
-
-.. only:: html
-
-    .. figure:: /gallery/images/thumb/sphx_glr_mergingdata_thumb.png
-
-        :ref:`sphx_glr_gallery_mergingdata.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /gallery/mergingdata
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Plotting maps with matplotlib and geopandas.">
-
-.. only:: html
-
-    .. figure:: /gallery/images/thumb/sphx_glr_mapping_thumb.png
-
-        :ref:`sphx_glr_gallery_mapping.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /gallery/mapping
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="When working with multiple spatial datasets -- especially multiple *polygon* or *line* datasets...">
-
-.. only:: html
-
-    .. figure:: /gallery/images/thumb/sphx_glr_set_operations_thumb.png
-
-        :ref:`sphx_glr_gallery_set_operations.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /gallery/set_operations
+   /gallery/cartopy_convert
 .. raw:: html
 
     <div style='clear:both'></div>
@@ -181,13 +61,13 @@ best-practices.
 
   .. container:: sphx-glr-download
 
-    :download:`Download all examples in Python source code: gallery_python.zip <//Users/choldgraf/Dropbox/github/forks/python/geo/geopandas/doc/source/gallery/gallery_python.zip>`
+    :download:`Download all examples in Python source code: gallery_python.zip <//mnt/c/Users/chold/Dropbox/github/forks/python/geo/geopandas/doc/source/gallery/gallery_python.zip>`
 
 
 
   .. container:: sphx-glr-download
 
-    :download:`Download all examples in Jupyter notebooks: gallery_jupyter.zip <//Users/choldgraf/Dropbox/github/forks/python/geo/geopandas/doc/source/gallery/gallery_jupyter.zip>`
+    :download:`Download all examples in Jupyter notebooks: gallery_jupyter.zip <//mnt/c/Users/chold/Dropbox/github/forks/python/geo/geopandas/doc/source/gallery/gallery_jupyter.zip>`
 
 .. rst-class:: sphx-glr-signature
 

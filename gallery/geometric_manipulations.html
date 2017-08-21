@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Geometric Manipulations &mdash; GeoPandas 0.2+53.g1731e44.dirty documentation</title>
+  <title>Geometric Manipulations &mdash; GeoPandas 0.2+69.g94161ea.dirty documentation</title>
   
 
   
@@ -32,6 +32,8 @@
   
     <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
 
   
         <link rel="author" title="About these documents"
@@ -39,10 +41,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="GeoPandas 0.2+53.g1731e44.dirty documentation" href="../index.html"/>
-        <link rel="up" title="Examples Gallery" href="index.html"/>
-        <link rel="next" title="Merging Data" href="mergingdata.html"/>
-        <link rel="prev" title="Managing Projections" href="projections.html"/> 
+    <link rel="top" title="GeoPandas 0.2+69.g94161ea.dirty documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -71,7 +70,7 @@
             
             
               <div class="version">
-                0.2+53.g1731e44.dirty
+                0.2+69.g94161ea.dirty
               </div>
             
           
@@ -95,27 +94,19 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples Gallery</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="geocoding.html">Geocoding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html">Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projections.html">Managing Projections</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Geometric Manipulations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#constructive-methods">Constructive Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#affine-transformations">Affine transformations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#examples-of-geometric-manipulations">Examples of Geometric Manipulations</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="mergingdata.html">Merging Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mapping.html">Mapping Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="set_operations.html">Set-Operations with Overlay</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Examples Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structures.html">Data Structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Reading and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing.html">Indexing and Selecting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mapping.html">Making Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections.html">Managing Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometric_manipulations.html">Geometric Manipulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../set_operations.html">Set Operations with overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aggregation_with_dissolve.html">Aggregation with dissolve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mergingdata.html">Merging Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geocoding.html">Geocoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference to All Attributes and Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to GeoPandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
@@ -162,8 +153,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="index.html">Examples Gallery</a> &raquo;</li>
         
       <li>Geometric Manipulations</li>
     
@@ -249,25 +238,25 @@ each object.</p>
 <h2>Affine transformations<a class="headerlink" href="#affine-transformations" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="GeoSeries.rotate">
-<code class="descclassname">GeoSeries.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>self</em>, <em>angle</em>, <em>origin=’center’</em>, <em>use_radians=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.rotate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">GeoSeries.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>self</em>, <em>angle</em>, <em>origin='center'</em>, <em>use_radians=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotate the coordinates of the GeoSeries.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="GeoSeries.scale">
-<code class="descclassname">GeoSeries.</code><code class="descname">scale</code><span class="sig-paren">(</span><em>self</em>, <em>xfact=1.0</em>, <em>yfact=1.0</em>, <em>zfact=1.0</em>, <em>origin=’center’</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.scale" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">GeoSeries.</code><code class="descname">scale</code><span class="sig-paren">(</span><em>self</em>, <em>xfact=1.0</em>, <em>yfact=1.0</em>, <em>zfact=1.0</em>, <em>origin='center'</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scale the geometries of the GeoSeries along each (x, y, z) dimensio.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="GeoSeries.skew">
-<code class="descclassname">GeoSeries.</code><code class="descname">skew</code><span class="sig-paren">(</span><em>self</em>, <em>angle</em>, <em>origin=’center’</em>, <em>use_radians=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.skew" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">GeoSeries.</code><code class="descname">skew</code><span class="sig-paren">(</span><em>self</em>, <em>angle</em>, <em>origin='center'</em>, <em>use_radians=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.skew" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shear/Skew the geometries of the GeoSeries by angles along x and y dimensions.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="GeoSeries.translate">
-<code class="descclassname">GeoSeries.</code><code class="descname">translate</code><span class="sig-paren">(</span><em>self</em>, <em>angle</em>, <em>origin=’center’</em>, <em>use_radians=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.translate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">GeoSeries.</code><code class="descname">translate</code><span class="sig-paren">(</span><em>self</em>, <em>angle</em>, <em>origin='center'</em>, <em>use_radians=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GeoSeries.translate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shift the coordinates of the GeoSeries.</p>
 </dd></dl>
 
@@ -276,12 +265,12 @@ each object.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = 5</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
-<span class="kn">from</span> <span class="nn">geopandas</span> <span class="kn">import</span> <span class="n">GeoSeries</span><span class="p">,</span> <span class="n">GeoDataFrame</span>
+<span class="kn">from</span> <span class="nn">geopandas</span> <span class="kn">import</span> <a href="../api/_as_gen/geopandas.GeoSeries.html#geopandas.GeoSeries" title="View documentation for geopandas.GeoSeries"><span class="n">GeoSeries</span></a><span class="p">,</span> <span class="n">GeoDataFrame</span>
 
 <span class="n">p1</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
 <span class="n">p2</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
 <span class="n">p3</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">])</span>
+<span class="n">g</span> <span class="o">=</span> <a href="../api/_as_gen/geopandas.GeoSeries.html#geopandas.GeoSeries" title="View documentation for geopandas.GeoSeries"><span class="n">GeoSeries</span></a><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 
 <span class="n">g</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -331,7 +320,7 @@ of our GeoSeries, use:</p>
 <p>GeoPandas also implements alternate constructors that can read any data
 format recognized by <a class="reference external" href="http://toblerity.github.io/fiona">fiona</a>.  To read a <a class="reference external" href="http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/nybb_16a.zip">file containing the boroughs
 of New York City</a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">boros</span> <span class="o">=</span> <span class="n">GeoDataFrame</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;data/nybb_16a/nybb.shp&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">boros</span> <span class="o">=</span> <a href="../api/_as_gen/geopandas.GeoDataFrame.from_file.html#geopandas.GeoDataFrame.from_file" title="View documentation for geopandas.GeoDataFrame.from_file"><span class="n">GeoDataFrame</span><span class="o">.</span><span class="n">from_file</span></a><span class="p">(</span><span class="s1">&#39;data/nybb_16a/nybb.shp&#39;</span><span class="p">)</span>
 <span class="n">boros</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;BoroCode&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">boros</span> <span class="o">=</span> <span class="n">boros</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">boros</span><span class="p">)</span>
@@ -378,7 +367,7 @@ of New York City</a>:</p>
 <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mi">900000</span><span class="p">,</span> <span class="mi">1080000</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="mi">280000</span>
 <span class="n">xc</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span> <span class="o">+</span> <span class="n">xmin</span>
 <span class="n">yc</span> <span class="o">=</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span> <span class="o">+</span> <span class="n">ymin</span>
-<span class="n">pts</span> <span class="o">=</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">)])</span>
+<span class="n">pts</span> <span class="o">=</span> <a href="../api/_as_gen/geopandas.GeoSeries.html#geopandas.GeoSeries" title="View documentation for geopandas.GeoSeries"><span class="n">GeoSeries</span></a><span class="p">([</span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>Now draw a circle with fixed radius around each point:</p>
@@ -443,15 +432,6 @@ borough that are in the holes:</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="mergingdata.html" class="btn btn-neutral float-right" title="Merging Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="projections.html" class="btn btn-neutral" title="Managing Projections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -479,7 +459,7 @@ borough that are in the holes:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2+53.g1731e44.dirty',
+            VERSION:'0.2+69.g94161ea.dirty',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
